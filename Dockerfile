@@ -1,5 +1,7 @@
 FROM visibilityspots/cloudflared
 
+USER root
+
 RUN apk add --no-cache tor socat && \
     sed "1s/^/SocksPort 0.0.0.0:9050\n/" /etc/tor/torrc.sample > /etc/tor/torrc && \
     echo '#!/bin/sh' > /entry.sh && \
